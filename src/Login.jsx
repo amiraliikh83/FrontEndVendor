@@ -14,7 +14,7 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
-const Register = () => {
+const Login = () => {
   const [formData, setFormData] = useState({
     UserName: "",
     Password: "",
@@ -34,8 +34,8 @@ const Register = () => {
       );
       console.log(response.data);
     } catch (error) {
-      if (error.response && error.response.data && error.response.data.error) {
-        setError(error.response.data.error);
+      if (error.response && error.response.data && error.response.data.message) {
+        setError(error.response.data.message);
       } else {
         setError("An error occurred. Please try again later");
       }
@@ -52,8 +52,7 @@ const Register = () => {
           sm={4}
           md={7}
           sx={{
-            backgroundImage:
-              "url(https://wallpaperaccess.com/full/796854.jpg)",
+            backgroundImage: "url(https://wallpaperaccess.com/full/796854.jpg)",
             backgroundRepeat: "no-repeat",
             backgroundColor: (t) =>
               t.palette.mode === "light"
@@ -73,8 +72,11 @@ const Register = () => {
               alignItems: "center",
             }}
           >
+            <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
+              <LockOutlinedIcon />
+            </Avatar>
             <Typography component="h1" variant="h5">
-              ورود
+              Sign in
             </Typography>
             <Box
               component="form"
@@ -87,7 +89,7 @@ const Register = () => {
                 required
                 fullWidth
                 id="UserName"
-                label="نام کاربری"
+                label="User Name"
                 name="UserName"
                 autoComplete="UserName"
                 autoFocus
@@ -98,15 +100,15 @@ const Register = () => {
                 required
                 fullWidth
                 name="Password"
-                label="رمز عبور"
-                type="Password"
-                id="Password"
+                label="Password"
+                type="password"
+                id="password"
                 autoComplete="current-password"
                 onChange={handleChange}
               />
               <FormControlLabel
                 control={<Checkbox value="remember" color="primary" />}
-                label="مرا به خاطر بسپار"
+                label="Remember me"
               />
               <Button
                 type="submit"
@@ -114,17 +116,17 @@ const Register = () => {
                 variant="contained"
                 sx={{ mt: 3, mb: 2 }}
               >
-               ورود
+                Sign In
               </Button>
               <Grid container>
                 <Grid item xs>
-                  <Link href="/forgetpassword" variant="body2">
-                    فراموشی رمز عبور
+                  <Link href="#" variant="body2">
+                    Forgot password?
                   </Link>
                 </Grid>
                 <Grid item>
                   <Link href="/register" variant="body2">
-                   حساب کاربری ندارید ثبت نام کنید
+                    Don't have an account? Sign Up
                   </Link>
                 </Grid>
               </Grid>
@@ -136,4 +138,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default Login;

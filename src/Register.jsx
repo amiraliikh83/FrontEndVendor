@@ -38,7 +38,7 @@ const Register = () => {
       console.log(response.data);
     } catch (error) {
       if (error.response && error.response.data && error.response.data.error) {
-        setError(error.response.data.error);
+        setError(error.response.data.message);
       } else {
         setError("An error occurred. Please try again later");
       }
@@ -55,8 +55,7 @@ const Register = () => {
           sm={4}
           md={7}
           sx={{
-            backgroundImage:
-              "url(https://wallpaperaccess.com/full/796854.jpg)",
+            backgroundImage: "url(https://wallpaperaccess.com/full/796854.jpg)",
             backgroundRepeat: "no-repeat",
             backgroundColor: (t) =>
               t.palette.mode === "light"
@@ -90,7 +89,7 @@ const Register = () => {
                 required
                 fullWidth
                 id="UserName"
-                label="نام کاربری"
+                label="UserName"
                 name="UserName"
                 autoComplete="UserName"
                 autoFocus
@@ -101,7 +100,7 @@ const Register = () => {
                 required
                 fullWidth
                 id="email"
-                label="ایمیل"
+                label="Email"
                 name="email"
                 autoComplete="email"
                 autoFocus
@@ -112,7 +111,7 @@ const Register = () => {
                 required
                 fullWidth
                 name="Password"
-                label="رمز عبور"
+                label="Password "
                 type="Password"
                 id="Password"
                 autoComplete="current-password"
