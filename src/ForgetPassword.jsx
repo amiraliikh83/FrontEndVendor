@@ -26,7 +26,7 @@ const ForgotPassword = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:3000/forgotpassword",
+        "http://localhost:3000/forgetpassword",
         { email }
       );
       console.log(response.data);
@@ -49,8 +49,7 @@ const ForgotPassword = () => {
           sm={4}
           md={7}
           sx={{
-            backgroundImage:
-              "url(https://wallpaperaccess.com/full/796854.jpg)",
+            backgroundImage: "url(https://wallpaperaccess.com/full/796854.jpg)",
             backgroundRepeat: "no-repeat",
             backgroundColor: (t) =>
               t.palette.mode === "light"
