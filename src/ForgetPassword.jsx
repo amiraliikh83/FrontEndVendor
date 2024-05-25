@@ -14,26 +14,20 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
-const Register = () => {
-  const [formData, setFormData] = useState({
-    UserGroupId: "",
-    Token: "",
-    UserName: "",
-    Password: "",
-    SortID: "",
-  });
+const ForgotPassword = () => {
+  const [email, setEmail] = useState("");
   const [error, setError] = useState("");
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    setEmail(e.target.value);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:3000/register",
-        formData
+        "http://localhost:3000/forgotpassword",
+        { email }
       );
       console.log(response.data);
     } catch (error) {
@@ -77,7 +71,7 @@ const Register = () => {
             }}
           >
             <Typography component="h1" variant="h5">
-              ثبت نام
+              فراموشی رمز عبور
             </Typography>
             <Box
               component="form"
@@ -89,38 +83,12 @@ const Register = () => {
                 margin="normal"
                 required
                 fullWidth
-                id="UserName"
-                label="نام کاربری"
-                name="UserName"
-                autoComplete="UserName"
-                autoFocus
-                onChange={handleChange}
-              />
-              <TextField
-                margin="normal"
-                required
-                fullWidth
                 id="email"
-                label="ایمیل"
+                label="آدرس ایمیل"
                 name="email"
                 autoComplete="email"
                 autoFocus
                 onChange={handleChange}
-              />
-              <TextField
-                margin="normal"
-                required
-                fullWidth
-                name="Password"
-                label="رمز عبور"
-                type="Password"
-                id="Password"
-                autoComplete="current-password"
-                onChange={handleChange}
-              />
-              <FormControlLabel
-                control={<Checkbox value="remember" color="primary" />}
-                label="مرا به خاطر بسپار"
               />
               <Button
                 type="submit"
@@ -128,14 +96,9 @@ const Register = () => {
                 variant="contained"
                 sx={{ mt: 3, mb: 2 }}
               >
-                ثبت نام
+                ارسال لینک بازیابی
               </Button>
               <Grid container>
-                <Grid item xs>
-                  <Link href="/forgetpassword" variant="body2">
-                    فراموشی رمز عبور
-                  </Link>
-                </Grid>
                 <Grid item>
                   <Link href="/login" variant="body2">
                     . قبلا ثبت نام کرده اید؟ وارد شوید
@@ -150,4 +113,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default ForgotPassword;

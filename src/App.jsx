@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Register from "./Register";
+import ForgetPassword from "./ForgetPassword";
 import Login from "./Login";
 
 const App = () => {
@@ -9,6 +10,7 @@ const App = () => {
       <Routes>
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/forgetpassword" element={<ForgetPassword />}/>
       </Routes>
     </Router>
   );
