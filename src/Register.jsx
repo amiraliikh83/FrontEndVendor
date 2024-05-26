@@ -16,11 +16,9 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 const Register = () => {
   const [formData, setFormData] = useState({
-    UserGroupId: "",
-    Token: "",
     UserName: "",
     Password: "",
-    SortID: "",
+    email : ""
   });
   const [error, setError] = useState("");
 
@@ -36,6 +34,11 @@ const Register = () => {
         formData
       );
       console.log(response.data);
+    
+      setTimeout(() => {
+        window.location.reload();
+      }, 2000); 
+    
     } catch (error) {
       if (error.response && error.response.data && error.response.data.error) {
         setError(error.response.data.message);
