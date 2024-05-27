@@ -18,7 +18,7 @@ const Register = () => {
   const [formData, setFormData] = useState({
     UserName: "",
     Password: "",
-    email : ""
+    Email : "",
   });
   const [error, setError] = useState("");
 
@@ -37,7 +37,7 @@ const Register = () => {
     
       setTimeout(() => {
         window.location.reload();
-      }, 2000); 
+      }, 6000); 
     
     } catch (error) {
       if (error.response && error.response.data && error.response.data.error) {
@@ -102,10 +102,10 @@ const Register = () => {
                 margin="normal"
                 required
                 fullWidth
-                id="email"
+                id="Email"
                 label="Email"
-                name="email"
-                autoComplete="email"
+                name="Email"
+                autoComplete="Email"
                 autoFocus
                 onChange={handleChange}
               />
