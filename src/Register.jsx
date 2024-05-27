@@ -18,7 +18,7 @@ const Register = () => {
   const [formData, setFormData] = useState({
     UserName: "",
     Password: "",
-    Email : "",
+    Email: "",
   });
   const [error, setError] = useState("");
 
@@ -34,11 +34,10 @@ const Register = () => {
         formData
       );
       console.log(response.data);
-    
+
       setTimeout(() => {
         window.location.reload();
-      }, 6000); 
-    
+      }, 6000);
     } catch (error) {
       if (error.response && error.response.data && error.response.data.error) {
         setError(error.response.data.message);
@@ -78,7 +77,7 @@ const Register = () => {
               alignItems: "center",
             }}
           >
-            <Typography component="h1" variant="h5">
+            <Typography component="h1" variant="h3">
               ثبت نام
             </Typography>
             <Box
@@ -132,15 +131,10 @@ const Register = () => {
               >
                 ثبت نام
               </Button>
-              <Grid container>
-                <Grid item xs>
-                  <Link href="/forgetpassword" variant="body2">
-                    فراموشی رمز عبور
-                  </Link>
-                </Grid>
-                <Grid item>
-                  <Link href="/login" variant="body2">
-                    . قبلا ثبت نام کرده اید؟ وارد شوید
+              <Grid container justifyContent="center" alignItems="center">
+                <Grid item xs={12} sm={6} md={4}>
+                  <Link href="/login" variant="h6" fontStyle="unset">
+                    قبلاً ثبت نام کرده‌اید؟ وارد شوید
                   </Link>
                 </Grid>
               </Grid>

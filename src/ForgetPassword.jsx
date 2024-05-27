@@ -69,21 +69,21 @@ const ForgetPassword = () => {
               alignItems: "center",
             }}
           >
-            <Typography component="h1" variant="h5">
+            <Typography component="div" variant="h3">
               فراموشی رمز عبور
             </Typography>
             <Box
               component="form"
               noValidate
               onSubmit={handleSubmit}
-              sx={{ mt: 1 }}
+              sx={{ mt: 6 }}
             >
               <TextField
                 margin="normal"
                 required
                 fullWidth
                 id="email"
-                label="آدرس ایمیل"
+                label="Email Address"
                 name="email"
                 autoComplete="email"
                 autoFocus
@@ -92,14 +92,16 @@ const ForgetPassword = () => {
               <Button
                 type="submit"
                 fullWidth
+                style={{width:"54vh", display : "flex" , alignItems : "center"}}
+                size="large"
                 variant="contained"
-                sx={{ mt: 3, mb: 2 }}
+                sx={{ mt: 3, mb:3 }}
               >
                 ارسال لینک بازیابی
               </Button>
-              <Grid container>
+              <Grid container justifyContent="center">
                 <Grid item>
-                  <Link href="/login" variant="body2">
+                  <Link href="/login" variant="h6" fontStyle={"unset"} style={{}}>
                     . قبلا ثبت نام کرده اید؟ وارد شوید
                   </Link>
                 </Grid>

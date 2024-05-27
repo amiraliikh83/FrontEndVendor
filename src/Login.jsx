@@ -18,23 +18,8 @@ const Login = () => {
   const [formData, setFormData] = useState({
     UserName: "",
     Password: ""
-    // captcha: "",
   });
   const [error, setError] = useState("");
-  // const [captchaImage, setCaptchaImage] = useState("");
-
-  // useEffect(() => {
-  //   fetchCaptcha();
-  // }, []);
-
-  // const fetchCaptcha = async () => {
-  //   try {
-  //     const response = await axios.get("http://localhost:3000/captcha");
-  //     setCaptchaImage(response.data); // Set captcha image data
-  //   } catch (error) {
-  //     console.error("Error fetching captcha:", error.message);
-  //   }
-  // };
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -100,11 +85,9 @@ const Login = () => {
               alignItems: "center",
             }}
           >
-            <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
-              <LockOutlinedIcon />
-            </Avatar>
-            <Typography component="h1" variant="h5">
-              Sign in
+           
+            <Typography component="h1" variant="h3" sx={{ mb: 3 }}>
+              ورود
             </Typography>
             <Box
               component="form"
@@ -134,21 +117,7 @@ const Login = () => {
                 autoComplete="current-password"
                 onChange={handleChange}
               />
-              {/* Captcha input field */}
-              {/* <TextField
-                margin="normal"
-                required
-                fullWidth
-                name="captcha"
-                label="Captcha"
-                id="captcha"
-                autoComplete="off"
-                onChange={handleChange}
-              /> */}
-              {/* Display captcha image */}
-              {/* {captchaImage && (
-                <img src={`data:image/svg+xml;base64,${btoa(captchaImage)}`} alt="captcha" />
-              )} */}
+              
               <FormControlLabel
                 control={<Checkbox value="remember" color="primary" />}
                 label="Remember me"
@@ -163,13 +132,13 @@ const Login = () => {
               </Button>
               <Grid container>
                 <Grid item xs>
-                  <Link href="/forgetpassword" variant="body2">
-                    Forgot password?
+                  <Link href="/forgetpassword" variant="h6">
+                  فراموشی رمز عبور
                   </Link>
                 </Grid>
                 <Grid item>
-                  <Link href="/register" variant="body2">
-                    Don't have an account? Sign Up
+                  <Link href="/register" variant="h6">.
+                    حساب کاربری ندارید ؟ ثبت نام کنید
                   </Link>
                 </Grid>
               </Grid>
