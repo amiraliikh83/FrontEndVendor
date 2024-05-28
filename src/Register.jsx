@@ -28,7 +28,7 @@ const Register = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:3000/register",
+        "http://localhost:3000/users/register",
         formData
       );
       console.log(response.data);
