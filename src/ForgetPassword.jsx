@@ -22,7 +22,7 @@ const ForgetPassword = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:3000/forgotpassword",
+        "http://localhost:3000/users/forgotpassword",
         { email }
       );
       console.log(response.data);
