@@ -15,7 +15,7 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 const Login = () => {
   const [formData, setFormData] = useState({
     UserName: "",
-    Password: ""
+    Password: "",
   });
   const [error, setError] = useState("");
 
@@ -54,8 +54,7 @@ const Login = () => {
           sm={4}
           md={7}
           sx={{
-            backgroundImage:
-              "url(https://wallpaperaccess.com/full/796854.jpg)",
+            backgroundImage: "url(https://wallpaperaccess.com/full/796854.jpg)",
             backgroundRepeat: "no-repeat",
             backgroundColor: (t) =>
               t.palette.mode === "light"
@@ -65,15 +64,7 @@ const Login = () => {
             backgroundPosition: "center",
           }}
         />
-        <Grid
-          item
-          xs={12}
-          sm={8}
-          md={5}
-          component={Paper}
-          elevation={6}
-          square
-        >
+        <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
           <Box
             sx={{
               my: 8,
@@ -83,7 +74,6 @@ const Login = () => {
               alignItems: "center",
             }}
           >
-           
             <Typography component="h1" variant="h3" sx={{ mb: 3 }}>
               ورود
             </Typography>
@@ -115,7 +105,7 @@ const Login = () => {
                 autoComplete="current-password"
                 onChange={handleChange}
               />
-              
+
               <FormControlLabel
                 control={<Checkbox value="remember" color="primary" />}
                 label="Remember me"
@@ -131,12 +121,12 @@ const Login = () => {
               <Grid container>
                 <Grid item xs>
                   <Link href="/forgetpassword" variant="h6">
-                  فراموشی رمز عبور
+                    فراموشی رمز عبور
                   </Link>
                 </Grid>
                 <Grid item>
-                  <Link href="/register" variant="h6">.
-                    حساب کاربری ندارید ؟ ثبت نام کنید
+                  <Link href="/register" variant="h6">
+                    . حساب کاربری ندارید ؟ ثبت نام کنید
                   </Link>
                 </Grid>
               </Grid>
