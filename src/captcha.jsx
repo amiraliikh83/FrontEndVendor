@@ -7,7 +7,7 @@ class Captcha extends Component {
     this.state = {
       captcha: "",
       input: "",
-      error: ""
+      error: "",
     };
   }
 

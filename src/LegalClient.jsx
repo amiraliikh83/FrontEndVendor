@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 
-const Home2 = () => {
+const LegalClient = () => {
   const navigate = useNavigate();
 
   const handleOnChange = (event, value) => {
@@ -12,10 +12,7 @@ const Home2 = () => {
     }
   };
 
-  const hagihogi = [
-    { label: "حقیقی" },
-    { label: "حقوقی" },
-  ];
+  const hagihogi = [{ label: "حقیقی" }, { label: "حقوقی" }];
 
   return (
     <Autocomplete
@@ -29,4 +26,4 @@ const Home2 = () => {
   );
 };
 
-export default Home2;
+export default LegalClient;

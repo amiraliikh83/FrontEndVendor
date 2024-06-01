@@ -63,7 +63,7 @@ const Login = () => {
             { token }
           );
           if (response.status === 200) {
-            navigate("/home");
+            navigate("/");
           }
         } catch (error) {
           console.error("Error verifying token", error);

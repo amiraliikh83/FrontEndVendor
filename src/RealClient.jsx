@@ -9,16 +9,16 @@ import CssBaseline from "@mui/material/CssBaseline";
 import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import axios from "axios"; 
+import axios from "axios";
 
 const RealClient = () => {
   const [formData, setFormData] = useState({
     CompanyName: "",
     CompanyPhone: "",
     CompanyWebsite: "",
-    CompanyAbout: ""
+    CompanyAbout: "",
   });
-  const [error, setError] = useState(""); 
+  const [error, setError] = useState("");
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -38,7 +38,7 @@ const RealClient = () => {
       );
       console.log(response.data);
       if (response.status === 200) {
-        navigate("/home");
+        navigate("/legalclient");
       }
     } catch (error) {
       if (
@@ -61,7 +61,7 @@ const RealClient = () => {
 
   return (
     <ThemeProvider theme={createTheme()}>
-      <Grid container component="main" sx={{ height: "90vh" }}>
+      <Grid container component="main" sx={{ height: "100vh" }}>
         <CssBaseline />
         <Grid
           item
@@ -72,22 +72,22 @@ const RealClient = () => {
           elevation={6}
           square
           sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            justifyContent: 'center',
-            margin: 'auto',
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            margin: "auto",
             padding: 3,
           }}
         >
           <Box
             component="form"
-            onSubmit={handleSubmit} 
+            onSubmit={handleSubmit}
             sx={{
-              '& .MuiTextField-root': { m: 1, width: '100%' },
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
+              "& .MuiTextField-root": { m: 1, width: "100%" },
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
             }}
             noValidate
             autoComplete="off"
@@ -95,59 +95,70 @@ const RealClient = () => {
             <Typography variant="h5" component="h2" gutterBottom>
               ثبت شرکت
             </Typography>
-            <Autocomplete
-              disablePortal
-              id="combo-box-demo"
-              options={hagihogi}
-              sx={{ width: '100%' }}
-              onChange={handleOnChange}
-              renderInput={(params) => <TextField {...params} label="عنوان" />}
-            />
-            <TextField
-              required
-              id="CompanyName"
-              name="CompanyName" 
-              label="نام شرکت"
-              value={formData.CompanyName}
-              onChange={handleChange} 
-              fullWidth
-            />
-            <TextField
-              required
-              id="CompanyPhone"
-              name="CompanyPhone" 
-              label="شماره تلفن"
-              value={formData.CompanyPhone} 
-              onChange={handleChange} 
-              fullWidth
-            />
-            <TextField
-              required
-              id="CompanyWebsite"
-              name="CompanyWebsite" 
-              label="وبسایت شرکت"
-              value={formData.CompanyWebsite} 
-              onChange={handleChange} 
-              fullWidth
-            />
-            <TextField
-              required
-              id="CompanyAbout"
-              name="CompanyAbout" 
-              label="درباره ی شرکت"
-              value={formData.CompanyAbout}
-              onChange={handleChange}
-              multiline
-              rows={4}
-              fullWidth
-            />
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+              }}
+            >
+              <Autocomplete
+                disablePortal
+                id="combo-box-demo"
+                options={hagihogi}
+                sx={{ width: "58vh", marginRight: "2vh" }}
+                onChange={handleOnChange}
+                renderInput={(params) => (
+                  <TextField {...params} label="عنوان" />
+                )}
+              />
+              <TextField
+                required
+                id="CompanyName"
+                name="CompanyName"
+                label="نام شرکت"
+                value={formData.CompanyName}
+                onChange={handleChange}
+                fullWidth
+              />
+              <TextField
+                required
+                id="CompanyPhone"
+                name="CompanyPhone"
+                label="شماره تلفن"
+                value={formData.CompanyPhone}
+                onChange={handleChange}
+                fullWidth
+              />
+              <TextField
+                required
+                id="CompanyWebsite"
+                name="CompanyWebsite"
+                label="وبسایت شرکت"
+                value={formData.CompanyWebsite}
+                onChange={handleChange}
+                fullWidth
+              />
+              <TextField
+                required
+                id="CompanyAbout"
+                name="CompanyAbout"
+                label="درباره ی شرکت"
+                value={formData.CompanyAbout}
+                onChange={handleChange}
+                multiline
+                rows={4}
+                fullWidth
+              />
+            </Box>
+
             {error && (
               <Typography color="error" sx={{ mt: 2 }}>
                 {error}
               </Typography>
             )}
             <Button
-              type="submit" 
+              type="submit"
               variant="contained"
               color="primary"
               sx={{ mt: 2 }}
@@ -161,9 +172,6 @@ const RealClient = () => {
   );
 };
 
-const hagihogi = [
-  { label: "حقیقی" },
-  { label: "حقوقی" },
-];
+const hagihogi = [{ label: "حقیقی" }, { label: "حقوقی" }];
 
 export default RealClient;
