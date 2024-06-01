@@ -4,6 +4,7 @@ import ForgetPassword from "./ForgetPassword";
 import Login from "./Login";
 import RealClient from "./RealClient";
 import LegalClient from "./LegalClient";
+import Captcha from "./Captcha";
 
 const App = () => {
   return (
@@ -14,6 +15,8 @@ const App = () => {
         <Route path="/forgetpassword" element={<ForgetPassword />} />
         <Route path="/realclient" element={<RealClient />} />
         <Route path="/legalclient" element={<LegalClient />} />
+        <Route path="/captcha" element={<Captcha />} />
+        <Route path="/" element={<Login />} />
       </Routes>
     </Router>
   );

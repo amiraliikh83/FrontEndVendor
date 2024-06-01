@@ -72,7 +72,7 @@ const Login = () => {
     };
 
     checkToken();
-  }, []); // Run once on component mount
+  }, []);
 
   return (
     <ThemeProvider theme={createTheme()}>

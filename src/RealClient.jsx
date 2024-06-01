@@ -9,7 +9,7 @@ import CssBaseline from "@mui/material/CssBaseline";
 import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import axios from "axios"; // اضافه شده
+import axios from "axios"; 
 
 const RealClient = () => {
   const [formData, setFormData] = useState({
@@ -18,7 +18,7 @@ const RealClient = () => {
     CompanyWebsite: "",
     CompanyAbout: ""
   });
-  const [error, setError] = useState(""); // اضافه شده
+  const [error, setError] = useState(""); 
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -82,7 +82,7 @@ const RealClient = () => {
         >
           <Box
             component="form"
-            onSubmit={handleSubmit} // اضافه شده
+            onSubmit={handleSubmit} 
             sx={{
               '& .MuiTextField-root': { m: 1, width: '100%' },
               display: 'flex',
@@ -106,37 +106,37 @@ const RealClient = () => {
             <TextField
               required
               id="CompanyName"
-              name="CompanyName" // اضافه شده
+              name="CompanyName" 
               label="نام شرکت"
-              value={formData.CompanyName} // اضافه شده
-              onChange={handleChange} // اضافه شده
+              value={formData.CompanyName}
+              onChange={handleChange} 
               fullWidth
             />
             <TextField
               required
               id="CompanyPhone"
-              name="CompanyPhone" // اضافه شده
+              name="CompanyPhone" 
               label="شماره تلفن"
-              value={formData.CompanyPhone} // اضافه شده
-              onChange={handleChange} // اضافه شده
+              value={formData.CompanyPhone} 
+              onChange={handleChange} 
               fullWidth
             />
             <TextField
               required
               id="CompanyWebsite"
-              name="CompanyWebsite" // اضافه شده
+              name="CompanyWebsite" 
               label="وبسایت شرکت"
-              value={formData.CompanyWebsite} // اضافه شده
-              onChange={handleChange} // اضافه شده
+              value={formData.CompanyWebsite} 
+              onChange={handleChange} 
               fullWidth
             />
             <TextField
               required
               id="CompanyAbout"
-              name="CompanyAbout" // اضافه شده
+              name="CompanyAbout" 
               label="درباره ی شرکت"
-              value={formData.CompanyAbout} // اضافه شده
-              onChange={handleChange} // اضافه شده
+              value={formData.CompanyAbout}
+              onChange={handleChange}
               multiline
               rows={4}
               fullWidth
@@ -147,7 +147,7 @@ const RealClient = () => {
               </Typography>
             )}
             <Button
-              type="submit" // اضافه شده
+              type="submit" 
               variant="contained"
               color="primary"
               sx={{ mt: 2 }}

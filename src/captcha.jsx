@@ -1,28 +1,56 @@
-import  { useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { Component } from "react";
+import RCG from "react-captcha-generator";
 
-const Captcha = () => {
-  const [captchaData, setCaptchaData] = useState({ text: '', imageData: '' });
+class Captcha extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      captcha: "",
+      input: "",
+      error: ""
+    };
+  }
 
-  useEffect(() => {
-    fetchCaptcha();
-  }, []);
+  result = (text) => {
+    this.setState({
+      captcha: text,
+    });
+  };
 
-  const fetchCaptcha = async () => {
-    try {
-      const response = await axios.get('http://localhost:3000/api/captcha');
-      setCaptchaData(response.data);
-    } catch (error) {
-      console.error('Error fetching captcha:', error);
+  handleChange = (e) => {
+    this.setState({ input: e.target.value });
+  };
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+    const { captcha, input } = this.state;
+    if (captcha === input) {
+      this.setState({ error: "" });
+      alert("Captcha Correct");
+    } else {
+      this.setState({ error: "Captcha Incorrect" });
     }
   };
 
-  return (
-    <div>
-      <h2>Login</h2>
-      <img src={captchaData.imageData} alt="Captcha" />
-    </div>
-  );
-};
+  render() {
+    const { error } = this.state;
+
+    return (
+      <div className="App">
+        <form onSubmit={this.handleSubmit}>
+          <input
+            type="text"
+            className="captcha-input"
+            value={this.state.input}
+            onChange={this.handleChange}
+          />
+          <input type="submit" value="Submit" />
+        </form>
+        {error && <p style={{ color: "red" }}>{error}</p>}
+        <RCG result={this.result} />
+      </div>
+    );
+  }
+}
 
 export default Captcha;
