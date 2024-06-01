@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -18,6 +19,11 @@ const Login = () => {
     Password: "",
   });
   const [error, setError] = useState("");
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    setError("");
+  }, [formData]);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -31,6 +37,9 @@ const Login = () => {
         formData
       );
       console.log(response.data);
+      if (response.status === 200) {
+        navigate("/realclient");
+      }
     } catch (error) {
       if (
         error.response &&
@@ -44,6 +53,27 @@ const Login = () => {
     }
   };
 
+  useEffect(() => {
+    const checkToken = async () => {
+      const token = localStorage.getItem("token");
+      if (token) {
+        try {
+          const response = await axios.post(
+            "http://localhost:3000/users/verifyToken",
+            { token }
+          );
+          if (response.status === 200) {
+            navigate("/home");
+          }
+        } catch (error) {
+          console.error("Error verifying token", error);
+        }
+      }
+    };
+
+    checkToken();
+  }, []); // Run once on component mount
+
   return (
     <ThemeProvider theme={createTheme()}>
       <Grid container component="main" sx={{ height: "100vh" }}>
@@ -54,7 +84,8 @@ const Login = () => {
           sm={4}
           md={7}
           sx={{
-            backgroundImage: "url(https://wallpaperaccess.com/full/796854.jpg)",
+            backgroundImage:
+              "url(https://wallpaperaccess.com/download/programing-1624614)",
             backgroundRepeat: "no-repeat",
             backgroundColor: (t) =>
               t.palette.mode === "light"
@@ -105,7 +136,11 @@ const Login = () => {
                 autoComplete="current-password"
                 onChange={handleChange}
               />
-
+              {error && (
+                <Typography color="error" sx={{ mt: 2 }}>
+                  {error}
+                </Typography>
+              )}
               <FormControlLabel
                 control={<Checkbox value="remember" color="primary" />}
                 label="Remember me"

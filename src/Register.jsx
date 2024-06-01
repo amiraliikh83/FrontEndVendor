@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom"; // Import useNavigate
 import axios from "axios";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -19,6 +20,7 @@ const Register = () => {
     Email: "",
   });
   const [error, setError] = useState("");
+  const navigate = useNavigate(); // Initialize useNavigate
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -32,12 +34,15 @@ const Register = () => {
         formData
       );
       console.log(response.data);
-
-      setTimeout(() => {
-        window.location.reload();
-      }, 6000);
+      if (response.status === 200) {
+        navigate("/home"); // Navigate to the login page after successful registration
+      }
     } catch (error) {
-      if (error.response && error.response.data && error.response.data.error) {
+      if (
+        error.response &&
+        error.response.data &&
+        error.response.data.message
+      ) {
         setError(error.response.data.message);
       } else {
         setError("An error occurred. Please try again later");
@@ -89,7 +94,7 @@ const Register = () => {
                 required
                 fullWidth
                 id="UserName"
-                label="UserName"
+                label="User Name"
                 name="UserName"
                 autoComplete="UserName"
                 autoFocus
@@ -103,7 +108,6 @@ const Register = () => {
                 label="Email"
                 name="Email"
                 autoComplete="Email"
-                autoFocus
                 onChange={handleChange}
               />
               <TextField
@@ -111,12 +115,17 @@ const Register = () => {
                 required
                 fullWidth
                 name="Password"
-                label="Password "
-                type="Password"
+                label="Password"
+                type="password"
                 id="Password"
                 autoComplete="current-password"
                 onChange={handleChange}
               />
+              {error && (
+                <Typography color="error" sx={{ mt: 2 }}>
+                  {error}
+                </Typography>
+              )}
               <FormControlLabel
                 control={<Checkbox value="remember" color="primary" />}
                 label="مرا به خاطر بسپار"
@@ -130,8 +139,8 @@ const Register = () => {
                 ثبت نام
               </Button>
               <Grid container justifyContent="center" alignItems="center">
-                <Grid item xs={12} sm={6} md={4}>
-                  <Link href="/login" variant="h6" fontStyle="unset">
+                <Grid item>
+                  <Link href="/login" variant="h6">
                     قبلاً ثبت نام کرده‌اید؟ وارد شوید
                   </Link>
                 </Grid>
