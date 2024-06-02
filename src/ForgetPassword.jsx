@@ -11,7 +11,7 @@ import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 const ForgetPassword = () => {
-  const [email, setEmail] = useState("");
+  const [Email, setEmail] = useState("");
   const [error, setError] = useState("");
 
   const handleChange = (e) => {
@@ -23,7 +23,7 @@ const ForgetPassword = () => {
     try {
       const response = await axios.post(
         "http://localhost:3000/users/forgotpassword",
-        { email }
+        { Email }
       );
       console.log(response.data);
     } catch (error) {
@@ -78,10 +78,10 @@ const ForgetPassword = () => {
                 margin="normal"
                 required
                 fullWidth
-                id="email"
+                id="Email"
                 label="Email Address"
-                name="email"
-                autoComplete="email"
+                name="Email"
+                autoComplete="Email"
                 autoFocus
                 onChange={handleChange}
               />

@@ -8,6 +8,11 @@ import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
 import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
+import Radio from "@mui/material/Radio";
+import RadioGroup from "@mui/material/RadioGroup";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import FormControl from "@mui/material/FormControl";
+import FormLabel from "@mui/material/FormLabel";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import axios from "axios";
 
@@ -17,6 +22,7 @@ const RealClient = () => {
     CompanyPhone: "",
     CompanyWebsite: "",
     CompanyAbout: "",
+    companyType: "",
   });
   const [error, setError] = useState("");
   const navigate = useNavigate();
@@ -38,7 +44,7 @@ const RealClient = () => {
       );
       console.log(response.data);
       if (response.status === 200) {
-        navigate("/legalclient");
+        navigate("/realclient");
       }
     } catch (error) {
       if (
@@ -54,7 +60,8 @@ const RealClient = () => {
   };
 
   const handleOnChange = (event, value) => {
-    if (value?.label === "حقوقی") {
+    setFormData({ ...formData, companyType: value });
+    if (value === "حقوقی") {
       navigate("/legalclient");
     }
   };
@@ -102,16 +109,29 @@ const RealClient = () => {
                 alignItems: "center",
               }}
             >
-              <Autocomplete
-                disablePortal
-                id="combo-box-demo"
-                options={hagihogi}
-                sx={{ width: "58vh", marginRight: "2vh" }}
-                onChange={handleOnChange}
-                renderInput={(params) => (
-                  <TextField {...params} label="عنوان" />
-                )}
-              />
+              <FormControl>
+                <FormLabel id="demo-row-radio-buttons-group-label"></FormLabel>
+                <RadioGroup
+                  row
+                  aria-labelledby="demo-row-radio-buttons-group-label"
+                  name="row-radio-buttons-group"
+                  value={formData.companyType}
+                  onChange={handleOnChange}
+                >
+                  <FormControlLabel
+                    value="حقوقی"
+                    control={<Radio />}
+                    onChange={handleOnChange}
+                    label="حقوقی"
+                  />
+                  <FormControlLabel
+                    value="حقیقی"
+                    control={<Radio />}
+                    onChange={handleOnChange}
+                    label="حقیقی"
+                  />
+                </RadioGroup>
+              </FormControl>
               <TextField
                 required
                 id="CompanyName"
@@ -171,7 +191,5 @@ const RealClient = () => {
     </ThemeProvider>
   );
 };
-
-const hagihogi = [{ label: "حقیقی" }, { label: "حقوقی" }];
 
 export default RealClient;
