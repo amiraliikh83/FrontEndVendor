@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import TextField from "@mui/material/TextField";
-import Autocomplete from "@mui/material/Autocomplete";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
@@ -18,11 +17,13 @@ import axios from "axios";
 
 const LegalClient = () => {
   const [formData, setFormData] = useState({
-    CompanyName: "",
+    CompanyName:"",
+    NumberRecord :"",
+    EconomicCode:"",
     CompanyPhone: "",
-    CompanyWebsite: "",
+    CompanyWebsite:"",
     CompanyAbout: "",
-    companyType: "",
+    companyType:"",
   });
   const [error, setError] = useState("");
   const navigate = useNavigate();
@@ -40,7 +41,7 @@ const LegalClient = () => {
     try {
       const response = await axios.post(
         "http://localhost:3000/users/register",
-        formData
+        formData,
       );
       console.log(response.data);
       if (response.status === 200) {
@@ -75,39 +76,37 @@ const LegalClient = () => {
           sm={8}
           md={5}
           component={Paper}
-          elevation={6}
+          elevation={8}
           square
           sx={{
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
             justifyContent: "center",
-            margin: "auto",
+            margin:"auto",
             padding: 3,
-          }}
-        >
+            
+          }}>
           <Box
             component="form"
             onSubmit={handleSubmit}
             sx={{
-              "& .MuiTextField-root": { m: 1, width: "100%" },
+              "& .MuiTextField-root": { m: 1, width: "80vh" },
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
             }}
             noValidate
-            autoComplete="off"
-          >
-            <Typography variant="h5" component="h2" gutterBottom>
-              ثبت شرکت
+            autoComplete="off">
+            <Typography variant="h4" component="h3" gutterBottom>
+           (حقوقی)ثبت شرکت
             </Typography>
             <Box
               sx={{
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
-              }}
-            >
+              }}>
               <FormControl>
                 <FormLabel id="demo-row-radio-buttons-group-label"></FormLabel>
                 <RadioGroup
@@ -115,8 +114,7 @@ const LegalClient = () => {
                   aria-labelledby="demo-row-radio-buttons-group-label"
                   name="row-radio-buttons-group"
                   value={formData.companyType}
-                  onChange={handleOnChange}
-                >
+                  onChange={handleOnChange}>
                   <FormControlLabel
                     value="حقوقی"
                     control={<Radio />}
@@ -142,8 +140,35 @@ const LegalClient = () => {
               />
               <TextField
                 required
+                id="NumberRecord"
+                name="NumberRecord"
+                label="شماره ثبت"
+                value={formData.NumberRecord}
+                onChange={handleChange}
+                fullWidth
+              />
+               <TextField
+                required
+                id="EconomicCode"
+                name="EconomicCode"
+                label="کد اقتصادی"
+                value={formData.EconomicCode}
+                onChange={handleChange}
+                fullWidth
+              />
+              <TextField
+                required
                 id="CompanyPhone"
                 name="CompanyPhone"
+                label="شماره تلفن"
+                value={formData.CompanyPhone}
+                onChange={handleChange}
+                fullWidth
+              />
+               <TextField
+                required
+                id=""
+                name=""
                 label="شماره تلفن"
                 value={formData.CompanyPhone}
                 onChange={handleChange}
@@ -166,13 +191,13 @@ const LegalClient = () => {
                 value={formData.CompanyAbout}
                 onChange={handleChange}
                 multiline
-                rows={4}
+                rows={2}
                 fullWidth
               />
             </Box>
 
             {error && (
-              <Typography color="error" sx={{ mt: 2 }}>
+              <Typography color="error" sx={{ mt: 1 }}>
                 {error}
               </Typography>
             )}
@@ -180,8 +205,7 @@ const LegalClient = () => {
               type="submit"
               variant="contained"
               color="primary"
-              sx={{ mt: 2 }}
-            >
+              sx={{ mt: 3  , width : "80vh"}}>
               ثبت
             </Button>
           </Box>
@@ -191,6 +215,6 @@ const LegalClient = () => {
   );
 };
 
-const hagihogi = [];
+
 
 export default LegalClient;

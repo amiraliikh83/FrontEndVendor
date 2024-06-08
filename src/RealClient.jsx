@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import TextField from "@mui/material/TextField";
-import Autocomplete from "@mui/material/Autocomplete";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
@@ -79,6 +78,7 @@ const RealClient = () => {
           elevation={6}
           square
           sx={{
+            width : "80vh",
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
@@ -91,7 +91,7 @@ const RealClient = () => {
             component="form"
             onSubmit={handleSubmit}
             sx={{
-              "& .MuiTextField-root": { m: 1, width: "100%" },
+              "& .MuiTextField-root": { m: 1, width: "80vh" },
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
@@ -99,8 +99,8 @@ const RealClient = () => {
             noValidate
             autoComplete="off"
           >
-            <Typography variant="h5" component="h2" gutterBottom>
-              ثبت شرکت
+            <Typography variant="h4" component="h2" gutterBottom>
+            (حقیقی)ثبت شرکت ، کارگاه و فروشگاه  
             </Typography>
             <Box
               sx={{
@@ -145,7 +145,7 @@ const RealClient = () => {
                 required
                 id="CompanyPhone"
                 name="CompanyPhone"
-                label="شماره تلفن"
+                label=" تلفن همراه"  
                 value={formData.CompanyPhone}
                 onChange={handleChange}
                 fullWidth
@@ -167,7 +167,7 @@ const RealClient = () => {
                 value={formData.CompanyAbout}
                 onChange={handleChange}
                 multiline
-                rows={4}
+                rows={2}
                 fullWidth
               />
             </Box>
@@ -181,7 +181,7 @@ const RealClient = () => {
               type="submit"
               variant="contained"
               color="primary"
-              sx={{ mt: 2 }}
+              sx={{ mt: 3 , width : "80vh"}}
             >
               ثبت
             </Button>
