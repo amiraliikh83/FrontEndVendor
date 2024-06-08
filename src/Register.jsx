@@ -49,7 +49,7 @@ const Register = () => {
       }
     }
   };
-
+  
   return (
     <ThemeProvider theme={createTheme()}>
       <Grid container component="main" sx={{ height: "100vh" }}>

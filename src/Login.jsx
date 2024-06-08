@@ -53,26 +53,26 @@ const Login = () => {
     }
   };
 
-  useEffect(() => {
-    const checkToken = async () => {
-      const token = localStorage.getItem("token");
-      if (token) {
-        try {
-          const response = await axios.post(
-            "http://localhost:3000/users/verifyToken",
-            { token }
-          );
-          if (response.status === 200) {
-            navigate("/");
-          }
-        } catch (error) {
-          console.error("Error verifying token", error);
-        }
-      }
-    };
+  // useEffect(() => {
+  //   const checkToken = async () => {
+  //     const token = localStorage.getItem("token");
+  //     if (token) {
+  //       try {
+  //         const response = await axios.post(
+  //           "http://localhost:3000/users/verifyToken",
+  //           { token }
+  //         );
+  //         if (response.status === 200) {
+  //           navigate("/realclient");
+  //         }
+  //       } catch (error) {
+  //         console.error("Error verifying token", error);
+  //       }
+  //     }
+  //   };
 
-    checkToken();
-  }, []);
+  //   checkToken();
+  // }, []);
 
   return (
     <ThemeProvider theme={createTheme()}>

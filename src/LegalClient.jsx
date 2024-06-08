@@ -1,5 +1,6 @@
+import React from "react";
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
@@ -15,15 +16,25 @@ import FormLabel from "@mui/material/FormLabel";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import axios from "axios";
 
+
 const LegalClient = () => {
   const [formData, setFormData] = useState({
-    CompanyName:"",
-    NumberRecord :"",
-    EconomicCode:"",
-    CompanyPhone: "",
-    CompanyWebsite:"",
-    CompanyAbout: "",
-    companyType:"",
+    VendorName: "",
+    Caption: "",
+    CodeMeli: "",
+    EconomyCode: "",
+    IssuePlaceId: "",
+    ProvinceId: "",
+    CityId: "",
+    AddressCenter: "",
+    AddressSite: "",
+    Site: "",
+    VendorText: "",
+    ContactPerson: "",
+    Mobile: "",
+    Telephone: "",
+    Email: "",
+    ContactText: "",
   });
   const [error, setError] = useState("");
   const navigate = useNavigate();
@@ -41,7 +52,7 @@ const LegalClient = () => {
     try {
       const response = await axios.post(
         "http://localhost:3000/users/register",
-        formData,
+        formData
       );
       console.log(response.data);
       if (response.status === 200) {
@@ -66,16 +77,28 @@ const LegalClient = () => {
     }
   };
 
+  const inputPropsStyles = {
+    sx: {
+      textAlign: "right",
+      "&::placeholder": {
+        textAlign: "right",
+      },
+    },
+  };
+
   return (
     <ThemeProvider theme={createTheme()}>
-      <Grid container component="main" sx={{ height: "100vh" }}>
+      <Grid
+        container
+        component="main"
+        sx={{ height: "100vh", backgroundImage: `url('')` }}
+      >
         <CssBaseline />
         <Grid
           item
           xs={12}
           sm={8}
           md={5}
-          component={Paper}
           elevation={8}
           square
           sx={{
@@ -83,30 +106,33 @@ const LegalClient = () => {
             flexDirection: "column",
             alignItems: "center",
             justifyContent: "center",
-            margin:"auto",
+            margin: "auto",
+            marginBottom: "auto",
             padding: 3,
-            
-          }}>
+          }}
+        >
           <Box
             component="form"
             onSubmit={handleSubmit}
             sx={{
-              "& .MuiTextField-root": { m: 1, width: "80vh" },
+              "& .MuiTextField-root": { m: "4px", width: "80vh" },
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
             }}
             noValidate
-            autoComplete="off">
+            autoComplete="off"
+          >
             <Typography variant="h4" component="h3" gutterBottom>
-           (حقوقی)ثبت شرکت
+              (حقوقی)ثبت شرکت
             </Typography>
             <Box
               sx={{
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
-              }}>
+              }}
+            >
               <FormControl>
                 <FormLabel id="demo-row-radio-buttons-group-label"></FormLabel>
                 <RadioGroup
@@ -114,7 +140,8 @@ const LegalClient = () => {
                   aria-labelledby="demo-row-radio-buttons-group-label"
                   name="row-radio-buttons-group"
                   value={formData.companyType}
-                  onChange={handleOnChange}>
+                  onChange={handleOnChange}
+                >
                   <FormControlLabel
                     value="حقوقی"
                     control={<Radio />}
@@ -130,68 +157,93 @@ const LegalClient = () => {
                 </RadioGroup>
               </FormControl>
               <TextField
+                inputProps={inputPropsStyles}
                 required
-                id="CompanyName"
-                name="CompanyName"
-                label="نام شرکت"
-                value={formData.CompanyName}
+                id="VendorName"
+                name="VendorName"
+                label="نام و نام خانوادگی"
+                value={formData.VendorName}
                 onChange={handleChange}
                 fullWidth
               />
               <TextField
+                inputProps={inputPropsStyles}
                 required
-                id="NumberRecord"
-                name="NumberRecord"
-                label="شماره ثبت"
-                value={formData.NumberRecord}
+                id="Caption"
+                name="Caption"
+                label="برند"
+                value={formData.Caption}
                 onChange={handleChange}
                 fullWidth
               />
-               <TextField
+              <TextField
+                inputProps={inputPropsStyles}
                 required
-                id="EconomicCode"
-                name="EconomicCode"
+                id="CodeMeli"
+                name="CodeMeli"
+                label="کدملی"
+                value={formData.CodeMeli}
+                onChange={handleChange}
+                fullWidth
+              />
+              <TextField
+                inputProps={inputPropsStyles}
+                required
+                id="EconomyCode"
+                name="EconomyCode"
                 label="کد اقتصادی"
-                value={formData.EconomicCode}
+                value={formData.EconomyCode}
                 onChange={handleChange}
                 fullWidth
               />
               <TextField
+                inputProps={inputPropsStyles}
                 required
-                id="CompanyPhone"
-                name="CompanyPhone"
-                label="شماره تلفن"
-                value={formData.CompanyPhone}
-                onChange={handleChange}
-                fullWidth
-              />
-               <TextField
-                required
-                id=""
-                name=""
-                label="شماره تلفن"
-                value={formData.CompanyPhone}
+                id="IssuePlaceId"
+                name="IssuePlaceId"
+                label="محل صدور"
+                value={formData.IssuePlaceId}
                 onChange={handleChange}
                 fullWidth
               />
               <TextField
+                inputProps={inputPropsStyles}
                 required
-                id="CompanyWebsite"
-                name="CompanyWebsite"
-                label="وبسایت شرکت"
-                value={formData.CompanyWebsite}
+                id="ProvinceId"
+                name="ProvinceId"
+                label="استان"
+                value={formData.ProvinceId}
                 onChange={handleChange}
                 fullWidth
               />
               <TextField
+                inputProps={inputPropsStyles}
                 required
-                id="CompanyAbout"
-                name="CompanyAbout"
-                label="درباره ی شرکت"
-                value={formData.CompanyAbout}
+                id="CityId"
+                name="CityId"
+                label="شهر"
+                value={formData.CityId}
                 onChange={handleChange}
-                multiline
-                rows={2}
+                fullWidth
+              />
+              <TextField
+                inputProps={inputPropsStyles}
+                required
+                id="AddressCenter"
+                name="AddressCenter"
+                label="آدرس مرکزی"
+                value={formData.AddressCenter}
+                onChange={handleChange}
+                fullWidth
+              />
+              <TextField
+                inputProps={inputPropsStyles}
+                required
+                id="ProvinceId"
+                name="ProvinceId"
+                label="استان"
+                value={formData.ProvinceId}
+                onChange={handleChange}
                 fullWidth
               />
             </Box>
@@ -205,7 +257,8 @@ const LegalClient = () => {
               type="submit"
               variant="contained"
               color="primary"
-              sx={{ mt: 3  , width : "80vh"}}>
+              sx={{ mt: 3, width: "80vh" }}
+            >
               ثبت
             </Button>
           </Box>
@@ -214,7 +267,5 @@ const LegalClient = () => {
     </ThemeProvider>
   );
 };
-
-
 
 export default LegalClient;

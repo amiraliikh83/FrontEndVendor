@@ -65,6 +65,15 @@ const RealClient = () => {
     }
   };
 
+  const inputPropsStyles = {
+    sx: {
+      textAlign: "right",
+      "&::placeholder": {
+        textAlign: "right",
+      },
+    },
+  };
+
   return (
     <ThemeProvider theme={createTheme()}>
       <Grid container component="main" sx={{ height: "100vh" }}>
@@ -78,7 +87,7 @@ const RealClient = () => {
           elevation={6}
           square
           sx={{
-            width : "80vh",
+            width: "80vh",
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
@@ -100,7 +109,7 @@ const RealClient = () => {
             autoComplete="off"
           >
             <Typography variant="h4" component="h2" gutterBottom>
-            (حقیقی)ثبت شرکت ، کارگاه و فروشگاه  
+              ثبت شرکت،کارگاه و فروشگاه (حقیقی)
             </Typography>
             <Box
               sx={{
@@ -133,6 +142,7 @@ const RealClient = () => {
                 </RadioGroup>
               </FormControl>
               <TextField
+                inputProps={inputPropsStyles}
                 required
                 id="CompanyName"
                 name="CompanyName"
@@ -142,15 +152,17 @@ const RealClient = () => {
                 fullWidth
               />
               <TextField
+                inputProps={inputPropsStyles}
                 required
                 id="CompanyPhone"
                 name="CompanyPhone"
-                label=" تلفن همراه"  
+                label=" تلفن همراه"
                 value={formData.CompanyPhone}
                 onChange={handleChange}
                 fullWidth
               />
               <TextField
+                inputProps={inputPropsStyles}
                 required
                 id="CompanyWebsite"
                 name="CompanyWebsite"
@@ -160,6 +172,7 @@ const RealClient = () => {
                 fullWidth
               />
               <TextField
+                inputProps={inputPropsStyles}
                 required
                 id="CompanyAbout"
                 name="CompanyAbout"
@@ -181,7 +194,7 @@ const RealClient = () => {
               type="submit"
               variant="contained"
               color="primary"
-              sx={{ mt: 3 , width : "80vh"}}
+              sx={{ mt: 3, width: "80vh" }}
             >
               ثبت
             </Button>
