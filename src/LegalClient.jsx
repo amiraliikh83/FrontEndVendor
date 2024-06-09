@@ -6,7 +6,6 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
-import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
 import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
@@ -15,7 +14,6 @@ import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import axios from "axios";
-
 
 const LegalClient = () => {
   const [formData, setFormData] = useState({
@@ -51,12 +49,12 @@ const LegalClient = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:3000/users/register",
+        "http://localhost:3000/users/registerfd",
         formData
       );
       console.log(response.data);
       if (response.status === 200) {
-        navigate("/legalclient");
+        navigate("/realclient");
       }
     } catch (error) {
       if (
@@ -90,7 +88,7 @@ const LegalClient = () => {
     <ThemeProvider theme={createTheme()}>
       <Grid
         container
-        component="main"
+        component="article"
         sx={{ height: "100vh", backgroundImage: `url('')` }}
       >
         <CssBaseline />
@@ -100,7 +98,7 @@ const LegalClient = () => {
           sm={8}
           md={5}
           elevation={8}
-          square
+          square="true"
           sx={{
             display: "flex",
             flexDirection: "column",
@@ -239,10 +237,80 @@ const LegalClient = () => {
               <TextField
                 inputProps={inputPropsStyles}
                 required
-                id="ProvinceId"
-                name="ProvinceId"
-                label="استان"
-                value={formData.ProvinceId}
+                id="AddressSite"
+                name="AddressSite"
+                label="آدرس"
+                value={formData.AddressSite}
+                onChange={handleChange}
+                fullWidth
+              />
+              <TextField
+                inputProps={inputPropsStyles}
+                required
+                id="Site"
+                name="Site"
+                label="وبسایت"
+                value={formData.Site}
+                onChange={handleChange}
+                fullWidth
+              />
+              <TextField
+                inputProps={inputPropsStyles}
+                required
+                id="VendorText"
+                name="VendorText"
+                label="متن فروشنده"
+                value={formData.VendorText}
+                onChange={handleChange}
+                fullWidth
+              />
+              <TextField
+                inputProps={inputPropsStyles}
+                required
+                id="ContactPerson"
+                name="ContactPerson"
+                label="مخاطب فروشنده"
+                value={formData.ContactPerson}
+                onChange={handleChange}
+                fullWidth
+              />
+              <TextField
+                inputProps={inputPropsStyles}
+                required
+                id="Mobile"
+                name="Mobile"
+                label="شماره تماس مخاطب"
+                value={formData.Mobile}
+                onChange={handleChange}
+                fullWidth
+              />
+              <TextField
+                inputProps={inputPropsStyles}
+                required
+                id="Telephone"
+                name="Telephone"
+                label="تلفن ثابت مخاطب"
+                value={formData.Telephone}
+                onChange={handleChange}
+                fullWidth
+              />
+              <TextField
+                inputProps={inputPropsStyles}
+                required
+                id="Email"
+                name="Email"
+                label="ایمیل مخاطب"
+                value={formData.Email}
+                onChange={handleChange}
+                fullWidth
+              />
+              <TextField
+                inputProps={inputPropsStyles}
+                required
+                id="ContactText"
+                name="ContactText"
+                label="متن مخاطب"
+                value={formData.ContactText}
                 onChange={handleChange}
                 fullWidth
               />

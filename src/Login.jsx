@@ -31,27 +31,21 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
       const response = await axios.post(
         "http://localhost:3000/users/login",
         formData
-      );
-      console.log(response.data);
-      if (response.status === 200) {
-        navigate("/realclient");
-      }
-    } catch (error) {
-      if (
-        error.response &&
-        error.response.data &&
-        error.response.data.message
-      ) {
-        setError(error.response.data.message);
-      } else {
-        setError("An error occurred. Please try again later");
-      }
+      )
+      .then((res) => {
+        console.log(res);
+        localStorage.clear();
+        localStorage.setItem("token", JSON.stringify(res.data.token));
+        navigate("/legalclient");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
     }
-  };
+      
 
   // useEffect(() => {
   //   const checkToken = async () => {
@@ -59,11 +53,11 @@ const Login = () => {
   //     if (token) {
   //       try {
   //         const response = await axios.post(
-  //           "http://localhost:3000/users/verifyToken",
+  //           "http://localhost:3000/users/verifytoken",
   //           { token }
   //         );
   //         if (response.status === 200) {
-  //           navigate("/realclient");
+  //           navigate("/");
   //         }
   //       } catch (error) {
   //         console.error("Error verifying token", error);
