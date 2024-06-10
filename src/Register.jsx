@@ -31,11 +31,11 @@ const Register = () => {
     try {
       const response = await axios.post(
         "http://localhost:3000/users/register",
-        formData,
+        formData
       );
       console.log(response.data);
       if (response.status === 200) {
-        navigate("/realclient"); // Navigate to the login page after successful registration
+        navigate("/private/realclient"); // Navigate to the login page after successful registration
       }
     } catch (error) {
       if (
@@ -78,7 +78,8 @@ const Register = () => {
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
-            }}>
+            }}
+          >
             <Typography component="h1" variant="h3">
               ثبت نام
             </Typography>
@@ -86,7 +87,8 @@ const Register = () => {
               component="form"
               noValidate
               onSubmit={handleSubmit}
-              sx={{ mt: 1 }}>
+              sx={{ mt: 1 }}
+            >
               <TextField
                 margin="normal"
                 required
@@ -132,7 +134,8 @@ const Register = () => {
                 type="submit"
                 fullWidth
                 variant="contained"
-                sx={{ mt: 3, mb: 2 }}>
+                sx={{ mt: 3, mb: 2 }}
+              >
                 ثبت نام
               </Button>
               <Grid container justifyContent="center" alignItems="center">
