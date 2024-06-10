@@ -42,7 +42,7 @@ const RealClient = () => {
       );
       console.log(response.data);
       if (response.status === 200) {
-        navigate("/realclient");
+        navigate("/private/realclient");
       }
     } catch (error) {
       if (
@@ -60,7 +60,7 @@ const RealClient = () => {
   const handleOnChange = (event, value) => {
     setFormData({ ...formData, companyType: value });
     if (value === "حقوقی") {
-      navigate("/legalclient");
+      navigate("/private/legalclient");
     }
   };
 

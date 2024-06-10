@@ -1,11 +1,20 @@
-// import React from "react";
-// import { Navigate, Outlet } from "react-router-dom";
+import React from "react";
+import { Navigate, Outlet } from "react-router-dom";
+import Logout from "../Logout"; // Adjust the path as needed
 
-// const PrivateRoute = ({ component: component, ...rest }) => {
+const PrivateRoute = ({ component: Component, ...rest }) => {
+  const token = localStorage.getItem("token");
 
-//     const token = localStorage.getItem('token')
+  if (!token) {
+    return <Navigate to="/login" />;
+  }
 
-//   return token ? <Outlet /> : <Navigate to="/login" />;
-// };
+  return (
+    <>
+      <Logout />
+      <Outlet />
+    </>
+  );
+};
 
-// export default PrivateRoute;
+export default PrivateRoute;

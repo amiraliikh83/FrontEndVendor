@@ -39,7 +39,7 @@ const Login = () => {
         console.log(res);
         localStorage.clear();
         localStorage.setItem("token", JSON.stringify(res.data.token));
-        navigate("/legalclient");
+        navigate("/private/legalclient");
       })
       .catch((err) => {
         console.log(err);

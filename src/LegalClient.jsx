@@ -71,7 +71,7 @@ const LegalClient = () => {
   const handleOnChange = (event, value) => {
     setFormData({ ...formData, companyType: value }); // Update the companyType field in formData
     if (value === "حقیقی") {
-      navigate("/realclient");
+      navigate("/private/realclient");
     }
   };
 
