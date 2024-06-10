@@ -97,12 +97,7 @@ const ForgetPassword = () => {
               </Button>
               <Grid container justifyContent="center">
                 <Grid item>
-                  <Link
-                    href="/login"
-                    variant="h6"
-                    fontStyle={"unset"}
-                    style={{}}
-                  >
+                  <Link href="/login" variant="h6" fontStyle={"unset"}>
                     . قبلا ثبت نام کرده اید؟ وارد شوید
                   </Link>
                 </Grid>

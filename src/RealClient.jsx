@@ -83,7 +83,7 @@ const RealClient = () => {
           sm={8}
           md={5}
           elevation={6}
-          square
+          square="true"
           sx={{
             width: "80vh",
             display: "flex",
