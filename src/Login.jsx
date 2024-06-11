@@ -124,13 +124,9 @@ const Login = () => {
                 Sign In
               </Button>
               <Grid container>
-                <Grid item xs>
-                  <Link href="/forgetpassword" variant="h6">
-                    فراموشی رمز عبور
-                  </Link>
-                </Grid>
+                <Grid item xs></Grid>
                 <Grid item>
-                  <Link href="/register" variant="h6">
+                  <Link href="/register" variant="h6" sx={{display : "flex" , alignItems : "center" , justifyContent : "center"}}>
                     . حساب کاربری ندارید ؟ ثبت نام کنید
                   </Link>
                 </Grid>
