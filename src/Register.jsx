@@ -20,7 +20,7 @@ const Register = () => {
     Email: "",
   });
   const [error, setError] = useState("");
-  const navigate = useNavigate(); // Initialize useNavigate
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -35,7 +35,7 @@ const Register = () => {
       );
       console.log(response.data);
       if (response.status === 200) {
-        navigate("/private/realclient"); // Navigate to the login page after successful registration
+        navigate("/private/realclient");
       }
     } catch (error) {
       if (

@@ -1,6 +1,6 @@
 import React from "react";
 import { Navigate, Outlet } from "react-router-dom";
-import Logout from "../Logout"; // Adjust the path as needed
+import Logout from "../Logout";
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
   const token = localStorage.getItem("token");

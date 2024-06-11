@@ -31,10 +31,8 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-      const response = await axios.post(
-        "http://localhost:3000/users/login",
-        formData
-      )
+    const response = await axios
+      .post("http://localhost:3000/users/login", formData)
       .then((res) => {
         console.log(res);
         localStorage.clear();
@@ -44,29 +42,7 @@ const Login = () => {
       .catch((err) => {
         console.log(err);
       });
-    }
-      
-
-  // useEffect(() => {
-  //   const checkToken = async () => {
-  //     const token = localStorage.getItem("token");
-  //     if (token) {
-  //       try {
-  //         const response = await axios.post(
-  //           "http://localhost:3000/users/verifytoken",
-  //           { token }
-  //         );
-  //         if (response.status === 200) {
-  //           navigate("/");
-  //         }
-  //       } catch (error) {
-  //         console.error("Error verifying token", error);
-  //       }
-  //     }
-  //   };
-
-  //   checkToken();
-  // }, []);
+  };
 
   return (
     <ThemeProvider theme={createTheme()}>

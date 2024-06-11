@@ -5,7 +5,7 @@ const Logout = () => {
     const timer = setTimeout(() => {
       localStorage.removeItem("token");
       window.location.reload();
-    },1800);
+    },1800000);
 
     return () => clearTimeout(timer);
   }, []);
