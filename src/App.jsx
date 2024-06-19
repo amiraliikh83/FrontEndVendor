@@ -18,7 +18,7 @@ const App = () => {
           <Route path="legalclient" element={<LegalClient />} />
           <Route path="realclient" element={<RealClient />} />
         </Route>
-        <Route path="/" element={<Login />} />
+        <Route path="/" element={<Login />} />  
       </Routes>
     </Router>
   );
